@@ -12,8 +12,7 @@ Define the application dependencies.
     $ mkdir composetest
     $ cd composetest
 
-2.
-#Create a file called app.py in your project directory and paste this in:
+Create a file called app.py in your project directory and paste this in:
 
 import time
 
@@ -45,6 +44,7 @@ def hello():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
 
+
 #In this example, redis is the hostname of the redis container on the application’s network. We use the default port for Redis, 6379.
 
 3. 
@@ -68,11 +68,11 @@ CMD ["python", "app.py"]
 
 #This tells Docker to:
 
-#    Build an image starting with the Python 3.4 image.
-#    Add the current directory . into the path /code in the image.
-#    Set the working directory to /code.
-#    Install the Python dependencies.
-#    Set the default command for the container to python app.py.
+    Build an image starting with the Python 3.4 image.
+    Add the current directory . into the path /code in the image.
+    Set the working directory to /code.
+    Install the Python dependencies.
+    Set the default command for the container to python app.py.
 
 Step 3: Define services in a Compose file
 
@@ -101,26 +101,6 @@ Step 4: Build and run your app with Compose
 #    From your project directory, start up your application by running docker-compose up.
 
     $ docker-compose up
-#    Creating network "composetest_default" with the default driver
-#    Creating composetest_web_1 ...
-#    Creating composetest_redis_1 ...
-#    Creating composetest_web_1
-#    Creating composetest_redis_1 ... done
-#    Attaching to composetest_web_1, composetest_redis_1
-#    web_1    |  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-#    redis_1  | 1:C 17 Aug 22:11:10.480 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-#    redis_1  | 1:C 17 Aug 22:11:10.480 # Redis version=4.0.1, bits=64, commit=00000000, modified=0, pid=1, just started
-#    redis_1  | 1:C 17 Aug 22:11:10.480 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
-#    web_1    |  * Restarting with stat
-#    redis_1  | 1:M 17 Aug 22:11:10.483 * Running mode=standalone, port=6379.
-#    redis_1  | 1:M 17 Aug 22:11:10.483 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-#    web_1    |  * Debugger is active!
-#    redis_1  | 1:M 17 Aug 22:11:10.483 # Server initialized
-#    redis_1  | 1:M 17 Aug 22:11:10.483 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
-#    web_1    |  * Debugger PIN: 330-787-903
-#    redis_1  | 1:M 17 Aug 22:11:10.483 * Ready to accept connections
-#
-#    Compose pulls a Redis image, builds an image for your code, and starts the services you defined. In this case, the code is statically copied into the image at build time.
 
 2.
     Enter http://0.0.0.0:5000/ in a browser to see the application running.
